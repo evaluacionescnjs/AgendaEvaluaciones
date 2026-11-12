@@ -1,4 +1,4 @@
-emailjs.init('2eMfdE1GQKr8lsBkC');
+emailjs.init('N2FAgcPT2uTiZ9-CO');
 document.addEventListener('DOMContentLoaded', () => {
     let ci;
     let nivelPermiso;
@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let usuarioActualCI = null;
     let nombreUsuario = null;
     let usuarioCuerda = null;
-    let currentMonth = 4;
+    let currentMonth = 10;
     let currentYear = 2026;
     let botonActivo = null;
 
@@ -26,8 +26,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* --- Supabase --- */
 
-    const SUPABASE_URL = "https://sxedtzokxzcbxpsutgor.supabase.co"
-    const SUPABASE_KEY = "sb_publishable_RsldWjWlIrNW6gkvi5BWjA_ZT7YGTqT"
+    const SUPABASE_URL = "https://ygxcvhqtmrtdasqgfpxw.supabase.co"
+    const SUPABASE_KEY = "sb_publishable_WLSUTbQGaCUh6WbQc09B3Q_ZofqhlNV"
 
     const supabaseClient = window.supabase.createClient(
     SUPABASE_URL,
@@ -445,8 +445,8 @@ document.addEventListener('DOMContentLoaded', () => {
         
         try {
         const response = await emailjs.send(
-            'service_jv9n0yr',
-            'template_a9cc0oa',
+            'service_utmg76n',
+            'template_0swr6us',
             params
         );
         console.log('Correo enviado', response.status, response.text);
@@ -938,9 +938,9 @@ document.addEventListener('DOMContentLoaded', () => {
                                     const fechaGrupo = grupo.GrupoDia;
 
                                     // Formato solo fecha (dd/mm/yyyy)
-                                    /* const formatoFecha = { year: 'numeric', month: '2-digit', day: '2-digit' };
-                                    const fechaGrupo = fecha.toLocaleDateString('es-ES', formatoFecha); */
-
+/*                                     const formatoFecha = { year: 'numeric', month: '2-digit', day: '2-digit' };
+                                    const fechaGrupo = fecha.toLocaleDateString('es-ES', formatoFecha);
+ */
 
                                 if (errorGrupo) {
                                     console.error('Error al obtener horario del grupo:', errorGrupo);
@@ -951,8 +951,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
                                     try {
                                         // Ejecutar todos los envíos en paralelo y esperar a que terminen
+                                        const fechaFormateada = fechaGrupo.split('-').reverse().join('-');
                                         await Promise.all(
-                                            dirMails.map(email => enviarCorreo(email, grupoNombre, fechaGrupo, horarioGrupo))
+                                            dirMails.map(email => enviarCorreo(email, grupoNombre, fechaFormateada, horarioGrupo))
                                         );
                                         console.log('Todos los mails enviados');
                                     } catch (err) {
